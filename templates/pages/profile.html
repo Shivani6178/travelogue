@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'css/profile.css' %}
+{% block content %}
+
+<section class="profile_container container mx-auto my-3 row row-cols-2">
+    <div class="inner_container_1 col-4">
+        <div class="inner_username_container p-2">
+            <div class="profile_img" data-bs-toggle="modal" data-bs-target="#profile_modal" alt="" srcset="">
+                    <img src="{% if profile_obj.profile_img %}{{profile_obj.profile_img.url}}{% else %}{% static 'images/defaultpro.jpg' %}{% endif %}">
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="profile_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Your Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-file-container row row-cols-1">
+                            <img src="{% if profile_obj.profile_img %}{{profile_obj.profile_img.url}}{% else %}{% static 'images/defaultpro.jpg' %}{% endif %}" alt="" srcset="" class="mx-auto" style="width: 300px; height: 300px">
+                            <input class="input-file" id="my-file" type="file" name="profile_img">
+                            <label tabindex="0" for="my-file" class="input-file-trigger">Edit</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"><a href="{% url 'profile' user_obj.username %}">Save changes</a></button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <h4 class="my-3 px-3">Hi! <span>{{user_obj.username}}</span></h4>
+        </div>
+        <div class="inner_nav_element my-5 p-3">
+            <div class="nav_ele">
+                <div class="heading my-4"><i class="fa-solid fa-user my-3"></i>
+                    <h5 class="my-3">Account Settings</h5>
+                </div>
+                <ul class="mx-5">
+                    <li onclick="profile()">Profile Information</li>
+                    {% comment %} <li onclick="documents()">Documents</li> {% endcomment %}
+                </ul>
+            </div>
+            <div class="nav_ele">
+                <div class="heading my-4"><i class="fa-solid fa-bookmark my-3"></i>
+                    <h5 class="my-3">My Bookings</h5>
+                </div>
+                <ul class="mx-5">
+                    <li onclick="started()">Not Started</li>
+                    <li onclick="going()">Ongoing</li>
+                    <li onclick="complete()">Completed</li>
+                </ul>
+            </div>
+            <div class="nav_ele">
+                <div class="heading my-4"><i class="fa-solid fa-circle-question my-3"></i>
+                    <h5 class="my-3">FAQs</h5>
+                </div>
+            </div>
+            <div class="nav_ele">
+                <div class="heading my-4"><i class="fa-solid fa-right-from-bracket my-3"></i>
+                    <h5 class="my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Log out</h5>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to logout?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary"><a href="{% url 'logoutUser' %}">Log out</a> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inner_container_main mx-4 col-7 p-4">
+        <div class="inner_container_2 profile" id="profile">
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <p id="messages">{{message}}</p>
+            </div>
+            {% endfor %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="personal_info my-4">
+                    <label for=""><b>Personal Information</b></label>
+                    <div class="form-floating">
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInputGrid" name="firstname"
+                                        placeholder="First Name" value="{{profile_obj.firstname}}">
+                                    <label for="floatingInputGrid">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInputGrid"
+                                        placeholder="Last Name" name="lastname" value="{{profile_obj.lastname}}">
+                                    <label for="floatingInputGrid">Last Name</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gender_container my-4">
+                    <label for="gender"><b>Your Gender </b></label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="male" id="inlineRadio1" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="female" id="inlineRadio2" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="other" id="inlineRadio2" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+
+                </div>
+
+                <div class="email_con my-4">
+                    <label for="email"><b>Email Address </b></label>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="floatingInputGrid"
+                                    placeholder="name@example.com" name="email" value="{{user_obj.email}}" disabled>
+                                <label for="floatingInputGrid">Email address</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phone_con my-4">
+                    <label for="phone"><b>Phone Number </b></label>
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid"
+                                    placeholder="Phone Number" name="phonenumber" value="{{profile_obj.phonenumber}}">
+                                <label for="floatingInputGrid">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="address_con my-4">
+                    <label for="address"><b>Address </b></label>
+                    <div class="row g-2">
+                        <div class="col-md my-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Country"
+                                    name="country" value="{{profile_obj.country}}">
+                                <label for="floatingInputGrid">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-md my-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="State"
+                                    name="state" value="{{profile_obj.state}}">
+                                <label for="floatingInputGrid">State</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="City"
+                                    name="city" value="{{profile_obj.city}}">
+                                <label for="floatingInputGrid">City</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Street"
+                                    name="street" value="{{profile_obj.street}}">
+                                <label for="floatingInputGrid">Street</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md my-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Pin Code"
+                                    name="pincode" value="{{profile_obj.pincode}}">
+                                <label for="floatingInputGrid">Pin code</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Update Profile</button>
+            </form>
+        </div>
+
+        <div class="inner_container_2 doc" id="doc">
+            <h4>Looks Like you don't have any Documents yet!</h4> 
+            <img src="{% static '/images/empty.png' %}" alt="" srcset="" style="width: 100%">
+        </div>
+        <div class="inner_container_2 notstarted" id="start">
+            {% if orders %}
+                <table class="table table-striped my-auto">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Hotel Name</th>
+                        <th scope="col">Room</th>
+                        <th scope="col">Start date</th>
+                        <th scope="col">End date</th>
+                        <th scope="col">Total Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in orders %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{item.hotelname}}</td>
+                        <td>{{item.room_des}}</td>
+                        <td>{{item.start_date}}</td>
+                        <td>{{item.end_date}}</td>
+                        <td>{{item.total_amount}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4>Looks Like you don't have any Bookings yet!</h4> 
+                <img src="{% static '/images/empty.png' %}" alt="" srcset="" style="width: 100%">
+            {% endif %}
+        </div>
+        <div class="inner_container_2 ongoing" id="go"><h4>Looks Like you don't have any Ongoing Bookings yet!</h4> <img src="{% static '/images/empty.png' %}" alt="" srcset="" style="width: 100%"></div>
+        <div class="inner_container_2 completed" id="complete"><h4>Looks Like you don't have any Completed Bookings yet!</h4> <img src="{% static '/images/empty.png' %}" alt="" srcset="" style="width: 100%"></div>
+    </div>
+</section>
+{% endblock content %}

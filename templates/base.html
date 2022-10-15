@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static '/css/payment.css' %}">
+    <link rel="stylesheet" href="{% static '/css/contactus.css' %}">
+    <link rel="stylesheet" href="{% static '/css/aboutus.css' %}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Travelogue</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static '/images/logo.svg' %}" alt="" width="250" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav justify-content-end collapse navbar-collapse" id="navbarTogglerDemo03">
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'home' %} active {% endif %}" aria-current="page" href= "{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'hotel' %} active {% endif %}" href="{% url 'hotel' %}">Hotel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'destination' %} active {% endif %}" href="{% url 'destination' %}">Destination</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'transport' %} active {% endif %}" href="{% url 'transport' %}">Transport</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'aboutus' %} active {% endif %}" href="{% url 'aboutus' %}">Aboutus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'contactus' %} active {% endif %}" href="{% url 'contactus' %}">Contactus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if navbar == 'profile' %} active {% endif %}" href="{% url 'profile' user %}">Hi! {{user.username}}</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <div class="footer-section-left">
+            <div class="sec quicklinks">
+                <h2>QUICK <span class="orange">LINKS</span></h2>
+                <ul>
+                    <li><a href="">Home </a></li>
+                    <li><a href="">Tour Package </a></li>
+                    <li><a href="">Hotels </a></li>
+                    <li><a href="">Tour Guide </a></li>
+                    <li><a href="">Transport </a></li>
+                    <li><a href="">About Us </a></li>
+                    <li><a href="">Contact </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-section-mid">
+            <h2>FOLLOW <span class="orange">US</span></h2>
+            <div class="sec-handles">
+                <ul class="sci">
+                    <li><a href="#"><i class="fa-brands fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube" aria-hidden="true"></i>Youtube</a></li>
+                    <li><a href="#"><i class="fa-brands fa-pinterest" aria-hidden="true"></i>Pintrest</a></li>
+                    <li><a href="#"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-section-right">
+            <div>
+                <div>
+            <h2>CONTACT <span class="orange">US</span></h2>
+                <ul>
+                    <li>
+                        <p><i class="fa-solid fa-phone"></i><a href="tel912559494903">912559494903</a></p>
+                    </li>
+                    <li>
+                        <p><i class="fa-solid fa-envelope"></i><a href="mailtravelouge12@gmail.com">travelouge12@gmail.com</a></p>
+                    </li>
+                </ul>
+                </div>
+                <div>
+                <h2>EXTRA <span class="orange">LINKS</span></h2>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#">My Wishlist</a></li>
+                    <li><a href="#">Ask Questions</a></li>
+                </ul>
+                </div>          
+        </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>@ 2022<span class="orange">Travelogue.</span> All Rights Reserved</p>
+        <p>Privacy | Terms and Condition</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="{% static '/js/profile.js' %}"></script>
+</body>
+
+</html>

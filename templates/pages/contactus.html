@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'css/contactus.css' %}
+{% block content %}
+<header class="ty">
+    <div class="container_contactus" id="header-title">
+      <h1>CONTACT <span>US</span></h1>
+    </div>
+    <div class="container_contactus">
+      <form class="pc">
+        <input type="text" placeholder="Name" name="name" />
+        <br /><br />
+        <input type="text" placeholder="Email" name="Email" />
+        <br /><br />
+        <input type="text" placeholder="Subject" name="Subject" />
+        <br /><br />
+        <textarea
+          name="msg"
+          id="msg"
+          cols="30"
+          rows="10"
+          placeholder="Message"
+        ></textarea>
+        <br /><br />
+        <button>Submit</button>
+      </form>
+    </div>
+  </header>
+  <section>
+    <div class="socials">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Necessitatibus quos voluptatem cum voluptate qui, quam distinctio sit
+        quaerat! Similique rerum qui soluta eum voluptatem fuga nulla quia,
+        quas obcaecati voluptas.
+      </p>
+      <div class="icons">
+        <i class="fa-solid fa-phone"></i>
+        <p>+912559494903</p>
+      </div>
+      <div class="icons">
+        <i class="fa-solid fa-envelope"></i>
+        <p>travelouge12@gmail.com</p>
+      </div>
+      <div class="shadow">
+        {% comment %} <img src="{% static './images/contour-lines.svg' %}" alt="" /> {% endcomment %}
+      </div>
+    </div>
+    <form class="phone" method="POST">
+      {% csrf_token %}
+      {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <p id="messages">{{message}}</p>
+            </div>
+      {% endfor %}
+      <input type="text" placeholder="Name" name="Name" />
+      <br /><br />
+      <input type="text" placeholder="Email" name="Email" />
+      <br /><br />
+      <input type="text" placeholder="Subject" name="Subject" />
+      <br /><br />
+      <textarea
+        name="msg"
+        id="msg"
+        cols="30"
+        rows="10"
+        placeholder="Message"
+      ></textarea>
+      <br /><br />
+      <button>Submit</button>
+    </form>
+  </section>
+{% endblock content %}

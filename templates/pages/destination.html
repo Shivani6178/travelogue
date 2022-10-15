@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'css/base.css' %}
+{% block content %}
+
+<div class="main_container_filter" id="main_container_filter">
+    <div class="container container-search my-5">
+        <form action="" method="get">
+            <div class="container form-container row">
+                <div class="form-element form-element-1 col-lg-4">
+                    <div class="inner_div">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input type="text" id="placename" name="placename" placeholder="Enter your destination" value="{{location}}"/>
+                    </div>
+                </div>
+                <div class="input-group my-3 mx-auto mb-3 col-lg-3 col-md-4" style="width: 500px; height: 40px;">
+                    <label class="input-group-text" for="inputGroupSelect01">Min Rating</label>
+                    <select class="form-select" id="inputGroupSelect01" name="min_rating">
+                        <option selected>1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                        <option value="3">4</option>
+                    </select>
+                </div>
+                <div class="form-btn cols-lg-3 col-md-3"> <button type="submit">Check for Avaliablity</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+{% if location %}
+<div class="container mx-auto my-3">
+    <h4>Result : {{location}}</h4>
+</div>
+<section class="destination_cards_container container m-auto" id="destination_cards_container">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
+        {% for result in results %}
+        {% if result.name %}
+        <div class="cards col my-3">
+            <div class="card m-auto" style="width: 18rem;">
+                <span
+                    class="position-absolute top-0 start-100 translate-middle badge bg-success">{{result.rating}}</span>
+                <img src="{% if result.photo.images.original.url %}{{result.photo.images.original.url}}{% else %}{% static 'images/hotel.jpg' %}{% endif %}"
+                    class="card-img-top" style="height: 15rem;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{result.name}}</h5>
+                    <p class="">
+                        <div class="rating-star">
+                            {% if result.rating >= "5" and result.rating < "6" %}
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            {% elif result.rating > "4" and result.rating < "5" %}
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            {% elif result.rating > "3" and result.rating < "4" %}
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            {% elif result.rating > "2" and result.rating < "1" %}
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            {% else %}
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+
+                            {% endif %}
+                    
+    
+                        </div>
+                    </p>
+                    <p class="card-text">{{result.address|truncatechars:50}}</p>
+                    <a href="{% url 'destinationinfo' result.location_id %}" class="btn">View More</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+</section>
+{% else %}
+<div class="container mx-auto my-3 p-3 text-center search_empty_container">
+    <h4> Search <span> Destionations</span></h4>
+    <img src="{% static 'images/search.svg' %}">
+</div>
+{% endif %}
+
+{% endblock content %}

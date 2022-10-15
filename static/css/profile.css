@@ -1,0 +1,65 @@
+@import 'global.css';
+
+
+/* ============== Profile ============== */
+
+.profile_container .inner_container_1 .inner_username_container{
+    background-color: var(--backgroundcolor);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    display: flex;
+    flex-wrap: nowrap;
+    /* text-align: center; */
+}
+
+.profile_container .inner_container_1 .inner_username_container h4 span{
+    color: var(--main);
+}
+
+.profile_container .inner_container_1 .inner_username_container .profile_img{
+    width: 70px;
+    height: 70px;
+}
+
+.profile_container .inner_container_1 .inner_username_container .profile_img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile_container .inner_container_1 .inner_nav_element{
+    /* background-color: var(--backgroundcolor); */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+}
+
+.profile_container .inner_container_1 .inner_nav_element .nav_ele .heading{
+    display: flex;
+    flex-wrap: nowrap;
+    cursor: pointer;
+
+}
+
+.profile_container .inner_container_1 .inner_nav_element .nav_ele .heading i{
+    padding: 0 20px;
+}
+
+.profile_container .inner_container_1 .inner_nav_element .nav_ele .heading h5{
+    text-transform: uppercase;
+    color: #606060;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.profile_container .inner_container_1 .inner_nav_element .nav_ele ul li{
+    list-style: none;
+    margin: 20px 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    color: #060606;
+    cursor: pointer;
+}
+
+.profile_container .inner_container_main{
+    /* background-color: var(--backgroundcolor); */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+}
