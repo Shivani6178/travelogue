@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<header id="home_main" class="home_main">
+    <div class="row row-cols-3">
+        <div class="left">
+            <div class="top_left">
+                <img src="{% static './images/top_left1.png' %}" class="img_top_left1" alt="" srcset="">
+                <img src="{% static './images/top_left2.png' %}" class="img_top_left2" alt="" srcset="">
+            </div>
+            <div class="bottom_left">
+                <img src="{% static './images/dog.png' %}" class="img_dog" alt="" srcset="">
+                <img src="{% static './images/camera.png' %}" class="img_camera" alt="" srcset="">
+                <img src="{% static './images/cam.png' %}" class="img_cam" alt="" srcset="">
+                <div class="bottom_">
+                    <p class="mx-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos cumque repellat
+                        ducimus!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="middle text-center">
+            <div class="top_middle">
+                <img src="{% static './images/middle.png' %}" class="img_middle" alt="" srcset="">
+            </div>
+            <div class="content_main my-5">
+                <h1>Travelogue</h1>
+                <p class="my-3">Have the Experience of a Life Time</p>
+                <button class="p-3"> Explore</button>
+            </div>
+        </div>
+
+        <div class="right text-center">
+            <div class="top_right">
+                <img src="{% static './images/top_right1.png' %} " class="img_top_right1" alt="" srcset="">
+                <img src="{% static './images/top_right2.png' %}" class="img_top_right2" alt="" srcset="">
+            </div>
+            <div class="bottom_right">
+                <img src="{% static './images/bottom-left.png' %} " class="img_bottom_left" alt="" srcset="">
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<section id="top_dest" class="top_dest">
+    <div class="heading text-center my-5">
+        <h5 class="head_name">Top <span>Destinations</span></h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, ullam?</p>
+    </div>
+
+    <div class="swiper top_des_container container">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide slider">
+                <div class="card" style="width: 15rem;">
+                    <img src="{% static './images/package.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title my-3">Paris</h5>
+                        <p class="card-text my-3">Starting Price: RS. 45436</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider">
+                <div class="card" style="width: 15rem;">
+                    <img src="{% static './images/package.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title my-3">Paris</h5>
+                        <p class="card-text my-3">Starting Price: RS. 45436</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider">
+                <div class="card" style="width: 15rem;">
+                    <img src="{% static './images/package.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title my-3">Paris</h5>
+                        <p class="card-text my-3">Starting Price: RS. 45436</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider">
+                <div class="card" style="width: 15rem;">
+                    <img src="{% static './images/package.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title my-3">Paris</h5>
+                        <p class="card-text my-3">Starting Price: RS. 45436</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="swiper dest_add container mx-auto my-3">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="{% static './images/home-bg-2.jpg' %}" alt="" srcset="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/home-bg-1.jpg' %}" alt="" srcset="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/home-bg-3.jpg' %}" alt="" srcset="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/home-bg-2.jpg' %}" alt="" srcset="">
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<section id="gallery_view" class="gallery_view">
+    <div class="heading text-center my-5">
+        <h5 class="head_name">Our <span>Gallery</span></h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, ullam?</p>
+    </div>
+
+    <div class="photos-container">
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery1.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery2.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery3.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery5.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery6.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery7.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery8.jpg' %}" alt="" srcset="">
+        </div>
+
+        <div class="img-container">
+            <img src="{% static './images/gallery/gallery4.jpg' %}" alt="" srcset="">
+        </div>
+
+    </div>
+</section>
+
+<section id="services" class="services">
+    <div class="heading text-center my-5 p-4">
+        <h5 class="head_name">Our <span>Services</span></h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, ullam?</p>
+    </div>
+
+    <div class="service_container">
+        <div class="row row-cols-3 container mx-auto">
+            <div class="inner_container col-4 text-center mx-auto ">
+                <div class="img_div">
+                    <img src="{% static './images/services/camp.png' %}" alt="" srcset="">
+                </div>
+                <h5>Various Adventure</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+            <div class="inner_container col-4 text-center mx-auto">
+                <div class="img_div">
+                    <img src="{% static './images/services/guidepost.png' %}" alt="" srcset="">
+                </div>
+                <h5>Complete Guide</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+            <div class="inner_container col-4 text-center mx-auto">
+                <div class="img_div">
+                    <img src="{% static './images/services/aeroplane.png' %}" alt="" srcset="">
+                </div>
+                <h5>Fastest Travel</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+            <div class="inner_container col-4 text-center mx-auto my-5">
+                <div class="img_div">
+                    <img src="{% static './images/services/caravan.png' %}" alt="" srcset="">
+                </div>
+                <h5>Family Trips</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+            <div class="inner_container col-4 text-center mx-auto my-5">
+                <div class="img_div">
+                    <img src="{% static './images/services/cutlery.png' %}" alt="" srcset="">
+                </div>
+                <h5>Affordable Hotels</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+            <div class="inner_container col-4 text-center mx-auto my-5">
+                <div class="img_div">
+                    <img src="{% static './images/services/backpack.png' %}" alt="" srcset="">
+                </div>
+                <h5>Custom Packages</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tenetur voluptatum optio
+                    nisi, corporis quo vel quasi error ad labore?</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section id="testimonial" class="testimonial">
+    <div class="heading text-center my-5">
+        <h5 class="head_name">Our <span>Testimonials</span></h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, ullam?</p>
+    </div>
+
+    <div class="swiper testimonial_div container">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide slider my-3">
+                <div class="card my-5" style="width: 20rem; ">
+                    <span class="position-absolute top-0 start-100 translate-middle batchh"><img src="{% static './images/comma.svg' %}" alt=""></span>
+                    <div class="img_div row row-cols-2">
+                        <img src="{% static './images/package.jpg' %}" class="my-4 ms-3" alt="...">
+                        <div class="content my-4">
+                            <h5 class="card-title my-3">John Den</h5>
+                            <p class="card-text">Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></span>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider my-3">
+                <div class="card my-5" style="width: 20rem; ">
+                    <span class="position-absolute top-0 start-100 translate-middle batchh"><img src="{% static './images/comma.svg' %}" alt=""></span>
+                    <div class="img_div row row-cols-2">
+                        <img src="{% static './images/package.jpg' %}" class="my-4 ms-3" alt="...">
+                        <div class="content my-4">
+                            <h5 class="card-title my-3">John Den</h5>
+                            <p class="card-text">Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></span>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="swiper-slide slider my-3">
+                <div class="card my-5" style="width: 20rem; ">
+                    <span class="position-absolute top-0 start-100 translate-middle batchh"><img src="{% static './images/comma.svg' %}" alt=""></span>
+                    <div class="img_div row row-cols-2">
+                        <img src="{% static './images/package.jpg' %}" class="my-4 ms-3" alt="...">
+                        <div class="content my-4">
+                            <h5 class="card-title my-3">John Den</h5>
+                            <p class="card-text">Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></span>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider my-3">
+                <div class="card my-5" style="width: 20rem; ">
+                    <span class="position-absolute top-0 start-100 translate-middle batchh"><img src="{% static './images/comma.svg' %}" alt=""></span>
+                    <div class="img_div row row-cols-2">
+                        <img src="{% static './images/package.jpg' %}" class="my-4 ms-3" alt="...">
+                        <div class="content my-4">
+                            <h5 class="card-title my-3">John Den</h5>
+                            <p class="card-text">Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></span>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <span class="logo_initial my-4">Travelogue</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="swiper brand-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="{% static './images/1.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/2.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/3.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/4.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/5.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="{% static './images/6.png' %}" alt="">
+        </div>
+    </div>
+</div>
+
+
+{% for order in orders %}
+    {{order.hotelname}}
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'css/base.css' %}
+{% block content %}
+<section id="hotelinfo" class="hotelinfo">
+    <div class="inner_main container mx-auto my-3">
+        <div class="hotel_name my-3">
+            <h3>{{response_hotel.hotel_name}}</h3>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Overview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#details_id">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#roomsType_id">Room Types</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#locationshotel_id">Location</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="inner_container_1 container mx-auto row row-cols-1 row-cols-lg-2 row-cols-md-1">
+        <img src="{{response_hotel.main_photo_url}}" class="img-fluid" alt="...">
+        <div class="overview_div p-4">
+            <h5>Overview</h5>
+            <p class="overview-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aspernatur fugiat
+                rerum ipsa cumque consequatur incidunt vel quos laboriosam unde sequi, officia nostrum tenetur
+                laudantium possimus neque aliquam voluptate corrupti?</p>
+            <div class="card my-4">
+                <h5 class="card-header">Book a room</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{response_rooms.block.0.room_name}}</h5>
+                    <p class="card-text">Rs. {{response_rooms.block.0.product_price_breakdown.gross_amount_per_night.value}}</p>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inner_container_2 container mx-auto py-3 my-5 row row-cols-1 row-cols-lg-2 row-cols-md-1" id="details_id">
+        <div class="details">
+            <h5>Hotel Details</h5>
+            <div class="element">
+                <h6>Property Location</h6>
+                <p>{{response_hotel.address}}</p>
+            </div>
+            <div class="element">
+                <h6>Rooms</h6>
+                <p>Make yourself at home in one of the 95 air-conditioned rooms featuring minibars and LCD
+                    televisions. Complimentary wireless Internet access is available to keep you connected.
+                    Bathrooms have showers and complimentary toiletries. Conveniences include phones, as well as
+                    coffee/tea makers and complimentary bottled water.</p>
+            </div>
+            <div class="element">
+                <h6>Amenities</h6>
+                <p>Take advantage of recreation opportunities such as a fitness center, or other amenities including
+                    complimentary wireless Internet access and tour/ticket assistance..</p>
+            </div>
+            <div class="element">
+                <h6>Dining</h6>
+                <p>Satisfy your appetite for lunch or dinner at the hotel's restaurant, Square Meal, or stay in and
+                    take advantage of the room service (during limited hours). Buffet breakfasts are available for a
+                    fee.</p>
+            </div>
+
+        </div>
+
+        <div class="inner_second">
+            <div class="facilities m-3">
+                <h5>Facilities:</h5>
+                <ul class="list-group">
+                    {% for facility in response_rooms.block.0.facilities %}
+                    <li class="list-group-item">{{facility.name}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="contact m-3">
+                <div class="card">
+                    <h5 class="card-header">Featured</h5>
+                    <div class="card">
+                        <div class="card-header">
+                            Quote
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer class="blockquote-footer">Someone famous in <cite
+                                        title="Source Title">Source Title</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rooms_type_container container mx-auto table-responsive" id="roomsType_id">
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Room Type</th>
+                    <th scope="col">Highlights</th>
+                    <th scope="col">Price Per Night</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h4>{{response_rooms.block.0.room_name}}</h4>
+                        <img src="{{response_rooms.block.0.photos}}" class="img-thumbnail" alt="...">
+                    </td>
+                    <td>
+                        <ul>
+                            {% for high in response_rooms.block.0.highlights %}
+                            <li><i class="fa-solid fa-check"></i>{{high.translated_name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="container_booking my-3">
+                            <div class="priver_per_per">
+                                <h5>Rs.{{response_rooms.block.0.product_price_breakdown.gross_amount_per_night.value}}</h5>
+                                <span>+ Taxes and Fees</span>
+                            </div>
+                            <button class="btn my-3"><a href="{% url 'bookings' response_hotel.hotel_name %}">Book Now</a></button>
+                        </div>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+
+    <div class="location-div container mx-auto" id="locationshotel_id">
+        <h5>Location</h5>
+        <div class="map">
+            {{map | safe}}
+        </div>
+    </div>
+</section>
+{% endblock content %}

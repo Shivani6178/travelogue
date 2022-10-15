@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="backgroundlines">
+  <img src="{% static 'images/contour-lines.svg' %}" alt="">
+</div>
+<div class="header-section">
+  <div class="header-section-left">
+    <img src="{% static 'images/aboutus.png' %}" alt="">
+  </div>
+  <div class="header-section-right">
+    <div class="header-section-right-heading">
+      <h1>Choose WiseTrips For All Your <span class="orange">Travels</span></h1>
+      <hr />
+    </div>
+    <div class="header-section-right-description">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+        tempore voluptatem pariatur qui et, tenetur quaerat quos atque
+        dolore voluptatibus, sed ipsa eligendi laborum magni libero
+        deleniti non quo eaque.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
+        tempore voluptatem pariatur qui et, tenetur quaerat quos atque
+        dolore voluptatibus, sed ipsa eligendi laborum magni libero
+        deleniti non quo eaque.
+      </p>
+    </div>
+    <div class="header-section-right-stats">
+      <div class="header-section-right-stats-top">
+        <p>Friendly Service</p>
+        <p>99%</p>
+      </div>
+      <div class="header-section-right-stats-bottom">
+        <div class="header-section-right-stats-bar"></div>
+      </div>
+      <div class="header-section-right-stats-top">
+        <p>Flexibility in packages</p>
+        <p>95%</p>
+      </div>
+      <div class="header-section-right-stats-bottom">
+        <div class="header-section-right-stats-bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="gallery_view" class="gallery_view">
+  <div class="heading text-center my-5">
+    <h5 class="head_name">Our <span>Gallery</span></h5>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, ullam?</p>
+  </div>
+
+  <div class="photos-container">
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery1.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery2.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery3.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery5.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery6.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery7.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery8.jpg' %}" alt="" srcset="">
+    </div>
+
+    <div class="img-container">
+      <img src="{% static './images/gallery/gallery4.jpg' %}" alt="" srcset="">
+    </div>
+
+  </div>
+</section>
+<div class="swiper brand-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="{% static './images/1.png' %}" alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src="{% static './images/2.png' %}" alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src="{% static './images/3.png' %}" alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src="{% static './images/4.png' %}" alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src="{% static './images/5.png' %}" alt="">
+    </div>
+    <div class="swiper-slide">
+      <img src="{% static './images/6.png' %}" alt="">
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

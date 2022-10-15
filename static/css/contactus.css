@@ -1,0 +1,168 @@
+@import 'global.css';
+
+
+.ty{
+    background: url('../images/contactusback.jpg') no-repeat;
+    background-size: 100%;
+    height: 40vh;
+    background-position: 0rem -10rem;
+    border-bottom: 5px solid var(--main);
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+}
+
+.ty .container_contactus {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.ty .container_contactus:nth-child(2) {
+    padding: 5rem;
+}
+
+.ty .container_contactus .pc {
+    padding: 25px;
+    width: 100%;
+    background-color: white;
+    transform: translateY(10rem);
+    box-shadow: 2px 10px 10px 3px rgba(135, 135, 135, 0.214);
+    z-index: 10;
+}
+
+.ty .container_contactus .pc input {
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
+
+.ty .container_contactus .pc textarea {
+    width: 100%;
+    padding: 1rem;
+}
+
+.ty .container_contactus .pc button {
+    width: 100;
+    padding: 0.5rem 1rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.socials {
+    padding: 3rem 7rem;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.socials p {
+    margin-bottom: 2rem;
+}
+
+.container_contactus h1 {
+    transform: translateY(3rem);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container_contactus h1 span {
+    color: var(--main);
+}
+
+.socials p {
+    width: 45%;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.socials .icons p {
+    width: 45%;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.socials .icons {
+    display: flex;
+    align-items: center;
+    margin: 0.25rem 0rem;
+}
+
+.socials .icons>p {
+    margin-left: 1rem;
+}
+
+.shadow {
+    position: absolute;
+    top: 21.5rem;
+    right: 0px;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    body {
+        background-color: var(--backgroundcolor);
+    }
+
+    .ty {
+        background-size: 100%;
+        background-position: center;
+        height: 30vh;
+    }
+
+    .ty #header-title {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .ty .container_contactus:nth-child(2) {
+        display: none;
+        padding: 0;
+    }
+
+    .ty #header-title h1 {
+        transform: none;
+    }
+
+    .ty .container_contactus .pc {
+        display: none;
+    }
+
+    .phone {
+        display: block !important;
+        transform: none;
+        padding: 1rem;
+    }
+
+    .shadow {
+        display: none;
+        border: 1px solid black;
+    }
+
+    .socials p {
+        width: 100%;
+    }
+
+    .socials .icons p {
+        width: 80%;
+        font-size: 0.8em;
+    }
+
+    .socials {
+        padding: 2rem 1rem;
+    }
+}
+
+.phone {
+    display: none;
+}
+
+.socials .icons p {
+    color: var(--main);
+}

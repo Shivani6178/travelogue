@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'css/base.css' %}
+{% block content %}
+<div class="container container-search my-5">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="container form-container row">
+      <div class="form-element form-element-1 col-lg-4 col-md-4">
+        <div class="inner_div">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" id="placename" name="placename" placeholder="Enter your destination" />
+        </div>
+      </div>
+
+      <div class="form-element form-element-2 col-lg-4 col-md-4">
+        <div class="inner_div">
+          <i class="fa-solid fa-calendar-days"></i>
+          <input type="date" id="check_in" name="check_in" placeholder="Check In" />
+        </div>
+      </div>
+
+      <div class="form-element form-element-3 col-lg-4 col-md-4">
+        <div class="inner_div">
+          <i class="fa-solid fa-calendar-days"></i>
+          <input type="date" id="check_out" name="check_out" placeholder="Check Out" />
+        </div>
+      </div>
+
+      <div class="form-element form-element-3 col-lg-3 col-md-3">
+        <div class="inner_div">
+          <i class="fa-solid fa-user"></i>
+          <input type="number" id="adult" name="adult" placeholder="Adults" />
+        </div>
+      </div>
+
+      <div class="form-element form-element-3 col-lg-3 col-md-3">
+        <div class="inner_div"> <i class="fa-solid fa-child"></i>
+          <input type="number" id="children" name="children" placeholder="Children" />
+        </div>
+      </div>
+
+      <div class="form-element form-element-3 col-lg-3 col-md-3">
+        <div class="inner_div">
+          <i class="fa-solid fa-bed"></i>
+          <input type="number" id="room" name="room" placeholder="Room" />
+        </div>
+      </div>
+      <div class="form-btn col-lg-3 col-md-3"> <button type="submit">Check for Avaliablity</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<section class="hotel-main-container container mx-auto">
+  <div class="filter-container">
+    <div class="box-container container">
+      <form action="" method="post">
+        <div class="box_div travel_purpose_div">
+          <label for="travel_purpose">Travel purpose:</label>
+          <select name="travel_purpose" id="travel_purpose">
+            <option value="leisure" selected>Leisure</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <div class="box_div order_by_div">
+          <label for="orderby">Order by:</label>
+          <select name="orderby" id="orderby">
+            <option value="popularity" selected>Popularity</option>
+            <option value="distance">Distance</option>
+            <option value="class_descending">Class descending</option>
+            <option value="class_ascending">Class ascending</option>
+            <option value="deals">Deals</option>
+            <option value="review_score">Review score</option>
+            <option value="price">Price</option>
+          </select>
+        </div>
+        <div class="box_div review_order_div">
+          <label for="star_ratings">Star Ratings:</label>
+          <ul class="list-group star_ratings">
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+              1 star
+            </li>
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+              2 star
+            </li>
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+              3 star
+            </li>
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+              4 star
+            </li>
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+              5 star
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="list-conatiner">
+  {% for result in results %}
+    <div class="hotel-card  my-4 row row-cols-1 row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+      <div class="img-div">
+        <img src="{{result.main_photo_url}}" alt="" srcset="">
+      </div>
+      <div class="desc-div">
+        <h4 class="hotel-name">{{result.hotel_name}}</h4>
+        <p class="hotel-location"><i class="fa-solid fa-location-dot m-2"></i><span>{{result.address}}</span> </p>
+        <ul class="specifications">
+         {% if result.is_free_cancellable %}<li>Free Cancellation</li>{% endif %}
+        </ul>
+      </div>
+      <div class="price-div row row-cols-1 mx-0">
+        <div class="rate-view row row-cols-2 my-3">
+          <div class="ratings"><span>{{result.review_score}}</span></div>
+          <p>{{result.review_score_word}}<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        </div>
+        <div class="price">
+          <h6>Price per person</h6>
+          <h5>{{result.price_breakdown.gross_price}}</h5>
+          <span>+ All taxes {{result.price_breakdown.all_inclusive_price}}</span>
+        </div>
+        <button class="mx-auto"><a href="{% url 'hotelinfo' result.hotel_id %}">View More</a></button>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</section>
+{% endblock content %}
